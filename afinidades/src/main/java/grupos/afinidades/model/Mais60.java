@@ -6,8 +6,8 @@ public class Mais60 extends GrupoAfinidade{
 
     private String nome = "Mais60";
 
-    public Mais60(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        super(pessoa, nome, percentualPorGrupoAfinidade);
+    public Mais60(TiposGruposAfinidade tipo) {
+        super(tipo);
     }
 
     @Override

@@ -5,8 +5,8 @@ import grupos.afinidades.model.enums.TiposGruposAfinidade;
 public class Negros extends GrupoAfinidade {
     private String nome = "Negros";
 
-    public Negros(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        super(pessoa, nome, percentualPorGrupoAfinidade);
+    public Negros(TiposGruposAfinidade tipo) {
+        super(tipo);
     }
 
     public Negros(String nome) {

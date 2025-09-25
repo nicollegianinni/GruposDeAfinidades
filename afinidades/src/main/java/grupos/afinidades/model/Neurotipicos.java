@@ -6,8 +6,8 @@ public class Neurotipicos extends GrupoAfinidade{
 
     private String nome = "Neurotipicos";
 
-    public Neurotipicos(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        super(pessoa, nome, percentualPorGrupoAfinidade);
+    public Neurotipicos(TiposGruposAfinidade tipo) {
+        super(tipo);
     }
     @Override
     public void preRequisitos() {

@@ -1,5 +1,6 @@
 package grupos.afinidades.controller;
 
+import grupos.afinidades.dto.PessoaDTO;
 import grupos.afinidades.model.Pessoa;
 import grupos.afinidades.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,14 @@ public class PessoaController {
     private PessoaService pessoaService;
 
     @PostMapping("/cadastrar")
-    public Pessoa cadastrarPessoa(@RequestBody Pessoa pessoa) {
-        return pessoaService.cadastrarPessoa(pessoa.getNome(),pessoa.getIdade());
+    public ResponseEntity<Pessoa> cadastrarPessoa(@RequestBody PessoaDTO pessoaDTO) {
+        Pessoa pessoa = pessoaService.cadastrarPessoa(pessoaDTO);
+        return ResponseEntity.ok(pessoa);
     }
 
-    @GetMapping("/Listadepessoas")
+    @GetMapping("/listarpessoas")
     public ResponseEntity<List<Pessoa>> getAll() {
-        return ResponseEntity.ok(pessoaService.ListaDePessoas());
+        return ResponseEntity.ok(pessoaService.listarPessoas());
     }
 
 }

@@ -6,8 +6,8 @@ public class MaeSolo extends GrupoAfinidade{
 
     private String nome = "MaeSolo";
 
-    public MaeSolo(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        super(pessoa, nome, percentualPorGrupoAfinidade);
+    public MaeSolo(TiposGruposAfinidade tipo) {
+        super(tipo);
     }
     @Override
     public void preRequisitos() {

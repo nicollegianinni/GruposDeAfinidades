@@ -6,8 +6,8 @@ public class BaixaRenda extends GrupoAfinidade{
 
     private String nome = "BaixaRenda";
 
-    public BaixaRenda(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        super(pessoa, nome, percentualPorGrupoAfinidade);
+    public BaixaRenda(TiposGruposAfinidade tipo) {
+        super(tipo);
     }
 
     @Override

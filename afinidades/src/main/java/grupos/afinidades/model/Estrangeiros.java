@@ -6,8 +6,8 @@ public class Estrangeiros extends GrupoAfinidade{
 
     private String nome = "Estrangeiros";
 
-    public Estrangeiros(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        super(pessoa, nome, percentualPorGrupoAfinidade);
+    public Estrangeiros(TiposGruposAfinidade tipo) {
+        super(tipo);
     }
 
     public Estrangeiros(String nome) {

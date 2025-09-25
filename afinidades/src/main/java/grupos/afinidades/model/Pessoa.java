@@ -8,7 +8,6 @@ import java.util.Set;
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
-
     @Id//gerara um id no banco de dados, o cliente nao precisa passar
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +23,6 @@ public class Pessoa {
             inverseJoinColumns = @JoinColumn(name = "grupo_id")
     )
     private Set<GrupoAfinidade> grupos = new HashSet<>();
-
 
     public Pessoa(String nome, int idade) {
         this.nome = nome;
@@ -65,12 +63,4 @@ public class Pessoa {
         this.grupos = grupos;
     }
 
-    @Override
-    public String toString() {
-        return "Dados{" +
-                "nome='" + nome + '\'' +
-                "idade=" + idade +
-                //"grupoAfinidade=" + grupoAfinidade +
-                '}';
-    }
 }
