@@ -2,6 +2,9 @@ package grupos.afinidades.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
@@ -14,8 +17,14 @@ public class Pessoa {
 
     //relacionamento futuro : manyToMany
     //um grupo pode ter muitas pessoas e uma pessoas pode se indentificar com muitos grupos
-    //@ManyToMany
-    private GrupoAfinidade grupoAfinidade;
+    @ManyToMany
+    @JoinTable(
+            name = "pessoa_grupo",
+            joinColumns = @JoinColumn(name = "pessoa_id"),
+            inverseJoinColumns = @JoinColumn(name = "grupo_id")
+    )
+    private Set<GrupoAfinidade> grupos = new HashSet<>();
+
 
     public Pessoa(String nome, int idade) {
         this.nome = nome;
@@ -49,12 +58,11 @@ public class Pessoa {
         this.idade = idade;
     }
 
-    public GrupoAfinidade getGrupoAfinidade() {
-        return grupoAfinidade;
+    public Set<GrupoAfinidade> getGrupos() {
+        return grupos;
     }
-
-    public void setGrupoAfinidade(GrupoAfinidade grupoAfinidade) {
-        this.grupoAfinidade = grupoAfinidade;
+    public void setGrupos(Set<GrupoAfinidade> grupos) {
+        this.grupos = grupos;
     }
 
     @Override
@@ -62,7 +70,7 @@ public class Pessoa {
         return "Dados{" +
                 "nome='" + nome + '\'' +
                 "idade=" + idade +
-                "grupoAfinidade=" + grupoAfinidade +
+                //"grupoAfinidade=" + grupoAfinidade +
                 '}';
     }
 }

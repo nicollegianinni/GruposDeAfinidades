@@ -3,19 +3,24 @@ package grupos.afinidades.model;
 import grupos.afinidades.model.enums.TiposGruposAfinidade;
 import jakarta.persistence.ManyToMany;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public abstract class GrupoAfinidade {
 
     protected String nome;
     //cota so faz parte da classe abstrata, nao faz parte das filhas
     protected double cotas;
 
-    //@ManyToMany
-    private Pessoa pessoa;
+    //relacionamento N:N (muitos para muitos)
+    @ManyToMany(mappedBy = "grupos") // lado inverso
+    private Set<Pessoa> pessoa = new HashSet<>();
+
     //add enum para calcular a porcentagem de cotas
     protected TiposGruposAfinidade percentualPorGrupoAfinidade;
 
     public GrupoAfinidade(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        this.pessoa = pessoa;
+        this.pessoa = (Set<Pessoa>) pessoa;
         this.nome = nome;
         this.percentualPorGrupoAfinidade = percentualPorGrupoAfinidade;
     }
@@ -66,11 +71,11 @@ public abstract class GrupoAfinidade {
         this.cotas = cotas;
     }
 
-    public Pessoa getPessoa() {
+    public Set<Pessoa> getPessoa() {
         return pessoa;
     }
 
-    public void setPessoa(Pessoa pessoa) {
+    public void setPessoa(Set<Pessoa> pessoa) {
         this.pessoa = pessoa;
     }
 
