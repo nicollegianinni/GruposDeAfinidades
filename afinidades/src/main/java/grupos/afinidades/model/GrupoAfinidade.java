@@ -5,15 +5,16 @@ import grupos.afinidades.model.enums.TiposGruposAfinidade;
 public abstract class GrupoAfinidade {
 
     protected String nome;
-
     //cota so faz parte da classe abstrata, nao faz parte das filhas
     protected double cotas;
-
+    private Pessoa pessoa;
     //add enum para calcular a porcentagem de cotas
     protected TiposGruposAfinidade percentualPorGrupoAfinidade;
 
-    public GrupoAfinidade(String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
+    public GrupoAfinidade(Pessoa pessoa, String nome, double cotas, TiposGruposAfinidade percentualPorGrupoAfinidade) {
+        this.pessoa = pessoa;
         this.nome = nome;
+        this.cotas = cotas;
         this.percentualPorGrupoAfinidade = percentualPorGrupoAfinidade;
     }
 

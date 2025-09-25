@@ -2,12 +2,16 @@ package grupos.afinidades.model;
 
 public class Pessoa {
 
+    //@Id gerara um id no banco de dados, o cliente nao precisa passar
     private Long id;
     private String nome;
     private int idade;
+    //relacionamento futuro : manyToMany
+    //um grupo pode ter muitas pessoas e uma pessoas pode se indentificar com muitos grupos
+   //@ManyToMany
+    private GrupoAfinidade grupoAfinidade;
 
-    public Pessoa(Long id, String nome, int idade) {
-        this.id = id;
+    public Pessoa( String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
     }
@@ -37,5 +41,14 @@ public class Pessoa {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    @Override
+    public String toString() {
+        return "Dados{" +
+                "nome='" + nome + '\'' +
+                "idade=" + idade +
+                "grupoAfinidade=" + grupoAfinidade +
+                '}';
     }
 }
