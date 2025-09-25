@@ -5,9 +5,8 @@ import grupos.afinidades.model.enums.TiposGruposAfinidade;
 public class Pcd extends GrupoAfinidade{
 
     private String nome = "Pcd";
-    public Pcd(String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        super(nome, percentualPorGrupoAfinidade);
-
+    public Pcd(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
+        super(pessoa, nome, percentualPorGrupoAfinidade);
     }
 
     @Override

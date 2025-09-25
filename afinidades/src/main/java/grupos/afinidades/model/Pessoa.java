@@ -1,17 +1,25 @@
 package grupos.afinidades.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Pessoa {
 
-    //@Id gerara um id no banco de dados, o cliente nao precisa passar
+    @Id//gerara um id no banco de dados, o cliente nao precisa passar
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private int idade;
+
     //relacionamento futuro : manyToMany
     //um grupo pode ter muitas pessoas e uma pessoas pode se indentificar com muitos grupos
    //@ManyToMany
     private GrupoAfinidade grupoAfinidade;
 
-    public Pessoa( String nome, int idade) {
+    public Pessoa(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
     }
@@ -41,6 +49,14 @@ public class Pessoa {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public GrupoAfinidade getGrupoAfinidade() {
+        return grupoAfinidade;
+    }
+
+    public void setGrupoAfinidade(GrupoAfinidade grupoAfinidade) {
+        this.grupoAfinidade = grupoAfinidade;
     }
 
     @Override

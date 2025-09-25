@@ -6,10 +6,14 @@ public class Estrangeiros extends GrupoAfinidade{
 
     private String nome = "Estrangeiros";
 
-    public Estrangeiros(String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
-        super(nome, percentualPorGrupoAfinidade);
-
+    public Estrangeiros(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
+        super(pessoa, nome, percentualPorGrupoAfinidade);
     }
+
+    public Estrangeiros(String nome) {
+        this.nome = nome;
+    }
+
     @Override
     public void preRequisitos() {
         System.out.println("pre requisitos do Grupo de Afinidade: Estrangeiros");

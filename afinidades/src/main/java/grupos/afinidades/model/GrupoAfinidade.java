@@ -11,10 +11,9 @@ public abstract class GrupoAfinidade {
     //add enum para calcular a porcentagem de cotas
     protected TiposGruposAfinidade percentualPorGrupoAfinidade;
 
-    public GrupoAfinidade(Pessoa pessoa, String nome, double cotas, TiposGruposAfinidade percentualPorGrupoAfinidade) {
+    public GrupoAfinidade(Pessoa pessoa, String nome, TiposGruposAfinidade percentualPorGrupoAfinidade) {
         this.pessoa = pessoa;
         this.nome = nome;
-        this.cotas = cotas;
         this.percentualPorGrupoAfinidade = percentualPorGrupoAfinidade;
     }
 
@@ -48,4 +47,35 @@ public abstract class GrupoAfinidade {
         }return 0;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getCotas() {
+        return cotas;
+    }
+
+    public void setCotas(double cotas) {
+        this.cotas = cotas;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public TiposGruposAfinidade getPercentualPorGrupoAfinidade() {
+        return percentualPorGrupoAfinidade;
+    }
+
+    public void setPercentualPorGrupoAfinidade(TiposGruposAfinidade percentualPorGrupoAfinidade) {
+        this.percentualPorGrupoAfinidade = percentualPorGrupoAfinidade;
+    }
 }
