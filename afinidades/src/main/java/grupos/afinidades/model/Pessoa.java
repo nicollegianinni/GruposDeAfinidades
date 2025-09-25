@@ -1,11 +1,9 @@
 package grupos.afinidades.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "pessoa")
 public class Pessoa {
 
     @Id//gerara um id no banco de dados, o cliente nao precisa passar
@@ -16,7 +14,7 @@ public class Pessoa {
 
     //relacionamento futuro : manyToMany
     //um grupo pode ter muitas pessoas e uma pessoas pode se indentificar com muitos grupos
-   //@ManyToMany
+    //@ManyToMany
     private GrupoAfinidade grupoAfinidade;
 
     public Pessoa(String nome, int idade) {

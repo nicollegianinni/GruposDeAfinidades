@@ -1,12 +1,15 @@
 package grupos.afinidades.model;
 
 import grupos.afinidades.model.enums.TiposGruposAfinidade;
+import jakarta.persistence.ManyToMany;
 
 public abstract class GrupoAfinidade {
 
     protected String nome;
     //cota so faz parte da classe abstrata, nao faz parte das filhas
     protected double cotas;
+
+    //@ManyToMany
     private Pessoa pessoa;
     //add enum para calcular a porcentagem de cotas
     protected TiposGruposAfinidade percentualPorGrupoAfinidade;
