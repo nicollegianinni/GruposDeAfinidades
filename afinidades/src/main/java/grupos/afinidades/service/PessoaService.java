@@ -31,21 +31,25 @@ public class PessoaService {
     public Pessoa cadastrarPessoa(PessoaDTO dto) {
         Pessoa pessoa = new Pessoa(dto.getNome(), dto.getIdade());
 
-        if (dto.getGruposIds() != null) {
+        if (dto.getGruposIds() != null && !dto.getGruposIds().isEmpty()) {
             Set<GrupoAfinidade> grupos = new HashSet<>(grupoAfinidadeRepository.findAllById(dto.getGruposIds()));
             pessoa.setGrupos(grupos);
+
+            System.out.println("Grupos encontrados: " + grupos.size());
         }
+
         return pessoaRepository.save(pessoa);
     }
+
 
     public List<Pessoa> listarPessoas() {
         return pessoaRepository.findAll();
     }
 
     //page nativo do spring nao do hibernete para paginação
-    public Page<Pessoa> buscarTodas(int page, int size, String sortBy, String direction){
-        Sort sort = direction.equalsIgnoreCase("desc")?
-                Sort.by(sortBy).descending():
+    public Page<Pessoa> buscarTodas(int page, int size, String sortBy, String direction) {
+        Sort sort = direction.equalsIgnoreCase("desc") ?
+                Sort.by(sortBy).descending() :
                 Sort.by(sortBy).ascending();
 
         Pageable pageable = PageRequest.of(page, size, sort);

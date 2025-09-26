@@ -17,10 +17,8 @@ public class Pessoa {
 
     //relacionamento futuro : manyToMany
     //um grupo pode ter muitas pessoas e uma pessoas pode se indentificar com muitos grupos
-
-    @JsonIgnoreProperties("pessoa")
-
-    @ManyToMany
+    //@JsonIgnoreProperties("pessoa")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "pessoa_grupo",
             joinColumns = @JoinColumn(name = "pessoa_id"),

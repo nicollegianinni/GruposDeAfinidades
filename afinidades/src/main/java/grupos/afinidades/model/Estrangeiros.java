@@ -1,17 +1,16 @@
 package grupos.afinidades.model;
 
 import grupos.afinidades.model.enums.TiposGruposAfinidade;
+import jakarta.persistence.DiscriminatorValue;
 
+@DiscriminatorValue("ESTRANGEIROS")
 public class Estrangeiros extends GrupoAfinidade{
 
     private String nome = "Estrangeiros";
 
-    public Estrangeiros(TiposGruposAfinidade tipo) {
-        super(tipo);
-    }
-
-    public Estrangeiros(String nome) {
-        this.nome = nome;
+    public Estrangeiros() {
+        super();
+        this.setNome("Estrangeiros");
     }
 
     @Override

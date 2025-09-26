@@ -20,7 +20,7 @@ public class PessoaController {
     @GetMapping("/buscartodas")
     public ResponseEntity<Page<Pessoa>> getAll (@RequestParam (defaultValue = "0") int page,
                                                 @RequestParam (defaultValue = "5") int size,
-                                                @RequestParam (defaultValue = "idade") String sortBy,
+                                                @RequestParam (defaultValue = "nome") String sortBy,
                                                 @RequestParam (defaultValue = "asc") String direction) {
         return ResponseEntity.ok(pessoaService.buscarTodas(page, size, sortBy, direction));
 

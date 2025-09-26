@@ -1,16 +1,15 @@
 package grupos.afinidades.model;
 
 import grupos.afinidades.model.enums.TiposGruposAfinidade;
+import jakarta.persistence.DiscriminatorValue;
 
+@DiscriminatorValue("NEGROS")
 public class Negros extends GrupoAfinidade {
     private String nome = "Negros";
 
-    public Negros(TiposGruposAfinidade tipo) {
-        super(tipo);
-    }
-
-    public Negros(String nome) {
-        this.nome = nome;
+    public Negros() {
+        super();
+        this.setNome("Negros");
     }
 
     @Override
@@ -18,5 +17,4 @@ public class Negros extends GrupoAfinidade {
         System.out.println("pre requisitos do Grupo de Afinidade: Negros\n" +
                 "Pessoas pardas(genetica mista) ou com descendencia afro ou indigenas");
     }
-
 }

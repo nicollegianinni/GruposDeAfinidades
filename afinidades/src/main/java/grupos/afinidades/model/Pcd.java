@@ -1,13 +1,16 @@
 package grupos.afinidades.model;
 
-import grupos.afinidades.model.enums.TiposGruposAfinidade;
 
+import jakarta.persistence.DiscriminatorValue;
+
+@DiscriminatorValue("PCD")
 public class Pcd extends GrupoAfinidade{
 
     private String nome = "Pcd";
 
-    public Pcd(TiposGruposAfinidade tipo) {
-        super(tipo);
+    public Pcd() {
+        super();
+        this.setNome("Pcd");
     }
 
     @Override

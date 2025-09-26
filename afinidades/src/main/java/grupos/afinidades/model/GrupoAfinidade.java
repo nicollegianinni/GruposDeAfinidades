@@ -11,6 +11,8 @@ import java.util.Set;
 //na qual as filhas que criaram as tabelas no banco de dados
 @Entity
 @Table(name = "Grupo_de_afinidades")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // ou JOINED, depende do que você quer
+@DiscriminatorColumn(name = "tipo_grupo", discriminatorType = DiscriminatorType.STRING)
 public abstract class GrupoAfinidade {
 
     @Id
@@ -21,7 +23,7 @@ public abstract class GrupoAfinidade {
     protected String nome;
 
     //relacionamento N:N (muitos para muitos)
-    @JsonIgnoreProperties("Grupo_de_afinidades")
+    //@JsonIgnoreProperties("Grupo_de_afinidades")
     @ManyToMany(mappedBy = "grupos") // lado inverso
     private Set<Pessoa> pessoa = new HashSet<>();
 
