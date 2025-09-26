@@ -1,5 +1,6 @@
 package grupos.afinidades.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -16,6 +17,9 @@ public class Pessoa {
 
     //relacionamento futuro : manyToMany
     //um grupo pode ter muitas pessoas e uma pessoas pode se indentificar com muitos grupos
+
+    @JsonIgnoreProperties("pessoa")
+
     @ManyToMany
     @JoinTable(
             name = "pessoa_grupo",

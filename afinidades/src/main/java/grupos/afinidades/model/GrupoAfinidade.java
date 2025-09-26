@@ -1,5 +1,6 @@
 package grupos.afinidades.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import grupos.afinidades.model.enums.TiposGruposAfinidade;
 import jakarta.persistence.*;
 
@@ -20,6 +21,7 @@ public abstract class GrupoAfinidade {
     protected String nome;
 
     //relacionamento N:N (muitos para muitos)
+    @JsonIgnoreProperties("Grupo_de_afinidades")
     @ManyToMany(mappedBy = "grupos") // lado inverso
     private Set<Pessoa> pessoa = new HashSet<>();
 

@@ -1,9 +1,10 @@
 package grupos.afinidades.dto;
 
+import grupos.afinidades.model.Pessoa;
+
 import java.util.Set;
 
 public class PessoaDTO {
-
     private String nome;
     private int idade;
     private Set<Long> gruposIds;

@@ -6,6 +6,10 @@ import grupos.afinidades.model.Pessoa;
 import grupos.afinidades.repository.GrupoAfinidadeRepository;
 import grupos.afinidades.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -15,14 +19,11 @@ import java.util.Set;
 //contrato
 @Service
 public class PessoaService {
-
     @Autowired
     private PessoaRepository pessoaRepository;
-
     @Autowired
     private GrupoAfinidadeRepository grupoAfinidadeRepository;
 
-    //cadastra nome da pessoa (juntamente com o grupo de afinidade)
     public PessoaService(PessoaRepository pessoaRepository) {
         this.pessoaRepository = pessoaRepository;
     }
@@ -41,13 +42,16 @@ public class PessoaService {
         return pessoaRepository.findAll();
     }
 
+    //page nativo do spring nao do hibernete para paginação
+    public Page<Pessoa> buscarTodas(int page, int size, String sortBy, String direction){
+        Sort sort = direction.equalsIgnoreCase("desc")?
+                Sort.by(sortBy).descending():
+                Sort.by(sortBy).ascending();
 
-
-
-
-
-
-
-    //busca lista de pessoas com seus grupos de afinidades
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return pessoaRepository.findAll(pageable);
+    }
 
 }
+
+//busca lista de pessoas com seus grupos de afinidades
